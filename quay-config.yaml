@@ -1,0 +1,51 @@
+- name: Bootstrapping a fresh Quay Container Registry installation
+  hosts: localhost
+
+  module_defaults:
+    group/herve4m.quay.quay:
+      quay_host: '{{ quay_host }}'
+      quay_token: '{{ quay_token }}'
+      validate_certs: false
+      state: present
+
+  vars:
+    users_csv_file: https://raw.githubusercontent.com/rh-trucathon/user_management/main/userFiles/superheroes-long.csv
+
+  tasks:
+
+  - name: Ensure the organization exists
+    herve4m.quay.quay_organization:
+      name: '{{ org }}'
+    vars:
+      org: "{{ item | split(',') | first | lower }}-org"
+    loop: "{{ lookup('ansible.builtin.url', users_csv_file, wantlist=True)[1:] }}"
+    loop_control:
+      label: "{{ org }}"
+
+  - name: Ensure the user exists
+    herve4m.quay.quay_user:
+      username: '{{ user }}'
+      password: '{{ password }}'
+    vars:
+      user: "{{ item | split(',') | first | lower }}"
+      password: "{{ item | split(',') | last }}"
+    loop: "{{ lookup('ansible.builtin.url', users_csv_file, wantlist=True)[1:] }}"
+    loop_control:
+      label: "{{ user }}"
+
+  - name: Ensure the admin team exists
+    herve4m.quay.quay_team:
+      name: admins
+      organization: '{{ org }}'
+      description: "Administrators"
+      role: admin
+      members:
+      - "{{ user }}"
+      append: false
+    vars:
+      org: "{{ item | split(',') | first | lower }}-org"
+      user: "{{ item | split(',') | first | lower }}"
+      password: "{{ item | split(',') | last }}"
+    loop: "{{ lookup('ansible.builtin.url', users_csv_file, wantlist=True)[1:] }}"
+    loop_control:
+      label: "{{ user }}"
