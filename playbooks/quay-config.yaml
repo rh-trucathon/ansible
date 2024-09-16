@@ -1,0 +1,12 @@
+tasks:
+  - name: Read users from CSV file and return a dictionary
+    hosts: localhost
+    community.general.read_csv:
+      path: users.csv
+      key: name
+    register: users
+    delegate_to: localhost
+
+- ansible.builtin.debug:
+    msg: 'User {{ users.dict.dag.name }} has UID {{ users.dict.dag.uid }} and GID {{ users.dict.dag.gid }}'
+
