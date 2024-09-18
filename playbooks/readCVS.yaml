@@ -13,24 +13,3 @@
     vars:
      csvFile: "{{ lookup('ansible.builtin.url', users_csv_file, wantlist=True)[1:] }}"
 
-
-
-  # - name: Ensure the user exists
-  #   kubernetes.core.k8s:
-  #     state: present
-  #     definition:
-  #       apiVersion: backstage.io/v1alpha1
-  #       kind: User
-  #       metadata:
-  #         name: "{{user}}"
-  #       spec:
-  #         profile:
-  #           email: "{{user}}@opentlc.com"
-  #           picture: https://avatars.dicebear.com/api/avataaars/breanna-davison@example.com.svg?background=%23fff
-  #         memberOf: [ ]
-  #   vars:
-  #     user: "{{ item | split(',') | first | lower }}"
-  #     password: "{{ item | split(',') | last }}"
-  #   loop: "{{ lookup('ansible.builtin.url', users_csv_file, wantlist=True)[1:] }}"
-  #   loop_control:
-  #     label: "{{ user }}"
