@@ -1,5 +1,20 @@
 # Ansible Playbooks
 
+## OpenCodeQuest Deployment
+
+### Requirements
+
+- Ansible 2.9+
+- `kubernetes.core` collection installed
+- Access to an OpenShift TAP demo cluster from demo.redhat.com
+
+It's possible to configure up to 6 different clusters (atlantis, central, gotham, madripoor, metropolis, wakanda)
+
+```sh
+ansible-playbook -e cluster=atlantis playbooks/deploy-opencodequest-workshop.yaml
+```
+
+
 ## Quay Configuration
 
 Install the pre-requisites.
