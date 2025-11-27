@@ -3,7 +3,7 @@
 
 # GitHub repository configuration for Helm charts
 gitops_repo:
-  url: "https://github.com/rh-trucathon/helm.git"
+  url: "https://github.com/rh-opencodequest/helm.git"
   branch: "main"
 
 # ArgoCD configuration

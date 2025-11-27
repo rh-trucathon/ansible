@@ -26,6 +26,6 @@
         # cluster: "{{ cluster | default('atlantis') }}"
         # clusters: "{{ clusters | default([]) }}"
         # gitops_repo:
-        #   url: "{{ gitops_repo_url | default('https://github.com/rh-trucathon/helm.git') }}"
+        #   url: "{{ gitops_repo_url | default('https://github.com/rh-opencodequest/helm.git') }}"
         #   branch: "{{ gitops_repo_branch | default('main') }}"
 

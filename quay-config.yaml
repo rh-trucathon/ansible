@@ -9,7 +9,7 @@
       state: present
 
   vars:
-    users_csv_file: https://raw.githubusercontent.com/rh-trucathon/user_management/main/userFiles/superheroes-long.csv
+    users_csv_file: https://raw.githubusercontent.com/rh-opencodequest/user_management/main/userFiles/superheroes-long.csv
 
   tasks:
 

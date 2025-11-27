@@ -2,7 +2,7 @@
   hosts: localhost
 
   vars:
-    users_csv_file: https://raw.githubusercontent.com/rh-trucathon/user_management/main/userFiles/superheroes-p3.csv
+    users_csv_file: https://raw.githubusercontent.com/rh-opencodequest/user_management/main/userFiles/superheroes-p3.csv
 
   tasks:
 

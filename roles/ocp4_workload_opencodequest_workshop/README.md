@@ -27,7 +27,7 @@ None - all variables have defaults.
 
 See `defaults/main.yaml` for all available variables. Key variables:
 
-- `gitops_repo.url`: GitHub repository URL (default: `https://github.com/rh-trucathon/helm.git`)
+- `gitops_repo.url`: GitHub repository URL (default: `https://github.com/rh-opencodequest/helm.git`)
 - `gitops_repo.branch`: Branch to use (default: `main`)
 - `cluster`: Cluster name to deploy to (default: `atlantis`)
 - `enable_*`: Boolean flags to enable/disable each component (all default to `true`)
@@ -48,7 +48,7 @@ See `defaults/main.yaml` for all available variables. Key variables:
       vars:
         cluster: atlantis
         gitops_repo:
-          url: "https://github.com/rh-trucathon/helm.git"
+          url: "https://github.com/rh-opencodequest/helm.git"
           branch: "main"
 ```
 
