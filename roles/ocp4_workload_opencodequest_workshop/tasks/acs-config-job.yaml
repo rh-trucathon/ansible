@@ -1,0 +1,9 @@
+---
+# Task for creating ACS Config Job ArgoCD Application
+
+- name: Create ACS Config Job ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'acs-config-job.j2') | from_yaml }}"
+  when: enable_acs | default(true)
+

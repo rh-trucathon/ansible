@@ -1,0 +1,34 @@
+---
+# Playbook to deploy OpenCodeQuest Workshop workloads
+# This playbook creates ArgoCD applications for all workshop components
+#
+# Usage:
+#   ansible-playbook playbooks/deploy-opencodequest-workshop.yaml -e ACTION=create
+#   ansible-playbook playbooks/deploy-opencodequest-workshop.yaml -e ACTION=destroy
+#
+# Variables:
+#   ACTION: create, provision, destroy, or remove (default: create)
+#   cluster: Single cluster name (default: atlantis)
+#   clusters: List of cluster names (overrides cluster if set)
+#   gitops_repo.url: GitHub repository URL for Helm charts
+#   gitops_repo.branch: Branch to use (default: main)
+
+- name: Deploy OpenCodeQuest Workshop Workloads
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ACTION: "{{ ACTION | default('create') }}"
+    become_override: "{{ become_override | default(false) }}"
+  
+  tasks:
+    - name: Include ocp4_workload_opencodequest_workshop role
+      ansible.builtin.include_role:
+        name: ocp4_workload_opencodequest_workshop
+      vars:
+        # Override role defaults if needed
+        # cluster: "{{ cluster | default('atlantis') }}"
+        # clusters: "{{ clusters | default([]) }}"
+        # gitops_repo:
+        #   url: "{{ gitops_repo_url | default('https://github.com/rh-trucathon/helm.git') }}"
+        #   branch: "{{ gitops_repo_branch | default('main') }}"
+

@@ -1,0 +1,9 @@
+---
+# Task for creating EDB Workshop Prod ArgoCD Application
+
+- name: Create EDB Workshop Prod ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'edb-workshop-prod.j2') | from_yaml }}"
+  when: enable_edb_workshop_prod | default(true)
+

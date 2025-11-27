@@ -1,0 +1,9 @@
+---
+# Task for creating EDB ArgoCD Application
+
+- name: Create EDB ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'edb.j2') | from_yaml }}"
+  when: enable_edb | default(true)
+

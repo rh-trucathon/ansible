@@ -1,0 +1,9 @@
+---
+# Task for creating RHDH Config Job ArgoCD Application
+
+- name: Create RHDH Config Job ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'rhdh-config-job.j2') | from_yaml }}"
+  when: enable_rhdh | default(true)
+

@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: edb
+  namespace: {{ argocd.namespace }}
+spec:
+  destination:
+    server: {{ argocd.destination_server | quote }}
+  project: {{ argocd.project }}
+  source:
+    repoURL: {{ gitops_repo.url | quote }}
+    targetRevision: {{ gitops_repo.branch }}
+    path: {{ helm_charts.edb_operator }}
+  syncPolicy:
+    automated: {}
+    retry:
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 10m
+      limit: 15
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true
+

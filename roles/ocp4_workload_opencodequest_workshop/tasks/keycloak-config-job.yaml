@@ -1,0 +1,9 @@
+---
+# Task for creating Keycloak Config Job ArgoCD Application
+
+- name: Create Keycloak Config Job ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'keycloak-config-job.j2') | from_yaml }}"
+  when: enable_keycloak | default(true)
+

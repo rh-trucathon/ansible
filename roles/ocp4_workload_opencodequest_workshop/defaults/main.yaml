@@ -1,0 +1,35 @@
+---
+# Default variables for ocp4_workload_opencodequest_workshop role
+
+# GitHub repository configuration for Helm charts
+gitops_repo:
+  url: "https://github.com/rh-trucathon/helm.git"
+  branch: "main"
+
+# ArgoCD configuration
+argocd:
+  namespace: openshift-gitops
+  project: default
+  destination_server: "https://kubernetes.default.svc"
+
+# Cluster configuration
+cluster: atlantis  # Options: atlantis, central, gotham, madripoor, metropolis, wakanda
+
+# Enable/disable components
+enable_edb: true
+enable_edb_workshop_prod: true
+enable_acs: true
+enable_devspaces: true
+enable_gitlab: true
+enable_keycloak: true
+enable_rhdh: true
+
+# Helm chart paths in the repository
+helm_charts:
+  acs_config_job: "acs-config-job"
+  devspaces_config_job: "devspaces-config-job"
+  edb_operator: "edb-operator"
+  edb_workshop: "edb-workshop"
+  gitlab_config_job: "gitlab-config-job"
+  keycloak_config_job: "keycloak-config-job"
+  rhdh_config_job: "rhdh-config-job"

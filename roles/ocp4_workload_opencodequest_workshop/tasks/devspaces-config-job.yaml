@@ -1,0 +1,9 @@
+---
+# Task for creating DevSpaces Config Job ArgoCD Application
+
+- name: Create DevSpaces Config Job ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'devspaces-config-job.j2') | from_yaml }}"
+  when: enable_devspaces | default(true)
+

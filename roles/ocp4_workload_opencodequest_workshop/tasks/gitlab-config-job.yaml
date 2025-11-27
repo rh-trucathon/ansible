@@ -1,0 +1,9 @@
+---
+# Task for creating GitLab Config Job ArgoCD Application
+
+- name: Create GitLab Config Job ArgoCD Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'gitlab-config-job.j2') | from_yaml }}"
+  when: enable_gitlab | default(true)
+

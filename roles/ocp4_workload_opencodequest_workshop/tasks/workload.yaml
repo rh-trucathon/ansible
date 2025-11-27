@@ -1,0 +1,23 @@
+---
+# Main tasks for ocp4_workload_opencodequest_workshop role
+
+- name: Include EDB task
+  ansible.builtin.include_tasks: edb.yaml
+
+- name: Include EDB Workshop Prod task
+  ansible.builtin.include_tasks: edb-workshop-prod.yaml
+
+- name: Include ACS Config Job task
+  ansible.builtin.include_tasks: acs-config-job.yaml
+
+- name: Include DevSpaces Config Job task
+  ansible.builtin.include_tasks: devspaces-config-job.yaml
+
+- name: Include GitLab Config Job task
+  ansible.builtin.include_tasks: gitlab-config-job.yaml
+
+- name: Include Keycloak Config Job task
+  ansible.builtin.include_tasks: keycloak-config-job.yaml
+
+- name: Include RHDH Config Job task
+  ansible.builtin.include_tasks: rhdh-config-job.yaml
