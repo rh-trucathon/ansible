@@ -13,7 +13,10 @@ It's possible to configure up to 6 different clusters (atlantis, central, gotham
 ```sh
 ansible-playbook -e cluster=atlantis playbooks/deploy-opencodequest-workshop.yaml
 ```
-
+or
+```sh
+make <cluster_name>
+```
 
 ## Quay Configuration
 
