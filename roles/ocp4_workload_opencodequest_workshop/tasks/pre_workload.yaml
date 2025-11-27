@@ -33,10 +33,6 @@
   ansible.builtin.set_fact:
     r_openshift_api_server: "{{ r_api_url.resources[0].status.apiServerURL }}"
 
-- name: Common password
-  ansible.builtin.set_fact:
-    common_password: "{{ lookup('ansible.builtin.password', '/tmp/passwordfile', chars=['ascii_letters'], length=8) }}"
-
 # Leave these as the last tasks in the playbook
 # ---------------------------------------------
 

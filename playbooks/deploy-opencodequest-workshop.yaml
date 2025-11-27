@@ -16,9 +16,6 @@
 - name: Deploy OpenCodeQuest Workshop Workloads
   hosts: localhost
   gather_facts: false
-  vars:
-    ACTION: "{{ ACTION | default('create') }}"
-    become_override: "{{ become_override | default(false) }}"
   
   tasks:
     - name: Include ocp4_workload_opencodequest_workshop role
