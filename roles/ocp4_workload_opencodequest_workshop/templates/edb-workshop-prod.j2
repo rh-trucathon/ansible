@@ -11,6 +11,8 @@ spec:
     repoURL: {{ gitops_repo.url | quote }}
     targetRevision: {{ gitops_repo.branch }}
     path: {{ helm_charts.edb_workshop }}
+    helm:
+      namespace: edb-database-prod
   syncPolicy:
     automated: {}
     retry:
