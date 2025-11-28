@@ -6,13 +6,12 @@ metadata:
 spec:
   destination:
     server: {{ argocd.destination_server | quote }}
+    namespace: edb-database-prod
   project: {{ argocd.project }}
   source:
     repoURL: {{ gitops_repo.url | quote }}
     targetRevision: {{ gitops_repo.branch }}
     path: {{ helm_charts.edb_workshop }}
-    helm:
-      namespace: edb-database-prod
   syncPolicy:
     automated: {}
     retry:
